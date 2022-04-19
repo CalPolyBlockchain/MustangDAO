@@ -1,6 +1,7 @@
 module.exports = {
 	content: ['./src/**/*.{js,jsx}', './public/index.html'],
 	theme: {
+		// NOTE THESE ARE NOT THE REAL COLORS YET
 		screens: {
 			sm: '480px',
 			md: '768px',
