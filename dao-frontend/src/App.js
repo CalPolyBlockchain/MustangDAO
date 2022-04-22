@@ -18,6 +18,18 @@ function App() {
           Learn React
         </a>
       </header>
+      <body>
+        {/* ~ ROUGH ouline of page  order listed does not matter*/}
+
+        {/* SHOW active proposals (User should be able to click and vote on these) */}
+        {/* Let user Create Proposal (modal components) */}
+
+
+        {/*CONNECT User wallet*/}
+
+        {/* SHOW  Outcomes of non-active Proposals*/}
+
+      </body>
     </div>
   );
 }
