@@ -1,6 +1,6 @@
 # MustangDAO
 
-!(https://github.com/CalPolyBlockchain/MustangDAO/blob/main/logo.png)
+![](https://github.com/CalPolyBlockchain/MustangDAO/blob/main/logo.png)
 
 
 Figma Designs: https://www.figma.com/file/fPCRjpeccexklASA1yoVtv/CP-DAO?node-id=0%3A1
