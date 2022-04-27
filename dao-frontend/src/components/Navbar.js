@@ -7,6 +7,14 @@ const nav_items = [
         name: 'Home',
         path: '/'
     },
+    {
+        name: 'Community',
+        path: '/app',
+    },
+    {
+        name: 'participate',
+        path: '/app',
+    },
 
     {
         name: 'App',
