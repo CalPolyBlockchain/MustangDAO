@@ -23,7 +23,7 @@ export default function Navbar(props) {
         setIsOpen(isOpen === '' ? 'hidden' : '');
     }
     return (
-        <nav className=" px-2 sm:px-4 py-2.5 text-white bg-darkblue2">
+        <nav className=" px-2 sm:px-4 py-2.5 text-white bg-black">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
                 <a href='/app' className="flex items-center">
                     <Logo/>
@@ -47,7 +47,7 @@ export default function Navbar(props) {
                             </p>
                         </h3>
                         <a href="app">
-                            <button className='bg-yellow1 m-2 hover:bg-white font-semibold outline outline-4 hover:text-yellow1 text-xl text-white py-2 px-4 w-40 rounded-2xl'>
+                            <button className='bg-yellow1 m-2 hover:bg-white font-semibold hover:text-yellow1 text-xl text-white py-2 px-4 w-40 rounded-2xl'>
                                 Connect
                             </button>
                         </a>
