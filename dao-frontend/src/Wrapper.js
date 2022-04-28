@@ -7,10 +7,8 @@ import {useState} from 'react';
 import home_page_data from './home_page_data';
 export default function Wrapper(){
     return(
-
-        <div className='' > 
+        <div className='bg-poly-bg bg-contain bg-fixed' > 
         <Navbar />
-        
         <BrowserRouter>
         <Routes>
           {/* HOME PAGE */}
@@ -20,9 +18,5 @@ export default function Wrapper(){
         </Routes>
       </BrowserRouter>
       </div>
-
-
-
-
     );
 }
