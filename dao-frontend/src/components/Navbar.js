@@ -31,7 +31,7 @@ export default function Navbar(props) {
         setIsOpen(isOpen === '' ? 'hidden' : '');
     }
     return (
-        <nav className=" px-2 sm:px-4 py-2.5 text-white bg-black">
+        <nav className=" sticky  top-0 z-50 px-2 sm:px-4 py-2.5 text-white bg-black">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
                 <a href='/app' className="flex items-center">
                     <Logo/>
