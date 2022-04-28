@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import {useState} from 'react';
-import {home_page_data} from './home_page_data';
+import home_page_data from './home_page_data';
 export default function Wrapper(){
     return(
 
@@ -17,7 +17,6 @@ export default function Wrapper(){
           <Route path="/" element={<Home/>} />
           <Route path="/home" element={<Home/>} />
           <Route path="/app" element={<App {...home_page_data} />} />
-
         </Routes>
       </BrowserRouter>
       </div>
