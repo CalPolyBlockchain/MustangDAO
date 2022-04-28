@@ -1,7 +1,7 @@
 import Proposal from "./Proposal";
 function ProposalView(props) {
     return (
-        <div className="container">
+        <div className="justify-center">
             {props.proposals.map(proposal => {
                 return (
                     <Proposal key={proposal.id} {...proposal} />
@@ -10,3 +10,4 @@ function ProposalView(props) {
         </div>
         );
 }
+export default ProposalView;
