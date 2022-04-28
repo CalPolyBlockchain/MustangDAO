@@ -12,10 +12,10 @@ module.exports = {
 			yellow1: '#F1AD2B',
 			yellow2 :'#222642',
 			yellow3: '#ff49db',
-			green1: '#391A51',
+			green1: '#12a47a',
 			green2: '#734C92',
 			green3: '#34eb3d',
-			darkBlue1: '#121E2A',
+			darkBlue1: '#0F1E2B',
 			// 'darkBlue2': '#fff620',
 			darkBlue3: '#8492a6',
 			blac: '#000000',
@@ -38,6 +38,7 @@ module.exports = {
 				'4xl': '2rem',
 			},
 			backgroundImage: {
+				'poly-bg': "url(../public/poly-bg.png)",
 				
 			},
 
