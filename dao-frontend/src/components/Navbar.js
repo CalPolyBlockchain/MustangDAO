@@ -48,7 +48,9 @@ export default function Navbar(props) {
                         ))}
                         <h3>
                             <p className="text-white text-3xl p-2 m-3 rounded-xl hover:bg-white hover:text-blac ">
+                                <a href="https://github.com/CalPolyBlockchain/MustangDAO">
                         <FaGithub className=" hover:text-blac " />
+                        </a>
                             </p>
                         </h3>
                         <a href="app">
