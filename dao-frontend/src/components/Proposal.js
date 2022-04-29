@@ -28,28 +28,29 @@ export default function Proposal(proposal) {
                 </div>
             </div>
             <div className="px-4 py-1">
-                <p className="text-left">{proposal.description}</p>
+                <p className="text-left max-w-xl">{proposal.description}</p>
                 <p className="text-left">{proposal.status}</p>
                 <div className="flex flex-row justify-between gap-4">
                     {/*  Show vote totals and current proportions */}
                     <div>
                         <p className="text-left text-3xl text-white"> {proposal.total_votes}</p>
-                        {proposal.votes.map((vote,i) => {
-                            return (
-                                <div key={i} className="flex flex-row justify-between gap-4">
-                                    <p className="text-left text-3xl"> {vote.option}</p>
-                                    <p className="text-left text-3xl"> {vote.count}</p>
-                                </div>)
-                        })}
+                        
                         {/* <ProposalData/> */}
-                        <div className="flex flex-row justify-between gap-4 text-center">
+                        <div className="flex flex-row justify-between gap-2 text-center">
                             {proposal.tags.map((tag, i) => {
                                 return (
-                                    <div key={i} className={`px-2 py-1 m-1 rounded-lg bg-${tag.color}`}>{tag.name}</div>)
+                                    <div key={i} className={`px-2 py-1 m-1 rounded-full bg-${tag.color}`}>{tag.name}</div>)
                             })}
                         </div>
                     </div>
-                    <div>
+                    <div className="flex flex-row gap-6">
+                    {proposal.votes.map((vote,i) => {
+                            return (
+                                <div key={i} className="flex flex-col">
+                                    <p className="text-left text-3xl text-yellow1"> {vote.count}</p>
+                                    <p className="text-left text-xl"> {vote.option}</p>
+                                </div>)
+                        })}
                         <button onClick={vote} className="btn bg-transparent outline outline-2 outline-green1 text-lg font-bold text-green1  mx-4">Vote</button>
                     </div>
                     {/* INDICATE PROG TO QUORUM */}
