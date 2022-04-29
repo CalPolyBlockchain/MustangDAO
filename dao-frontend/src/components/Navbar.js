@@ -9,8 +9,8 @@ const nav_items = [
     },
     
     {
-        name: 'participate',
-        path: '/app',
+        name: 'blog',
+        path: 'https://mustang-dao-forum.vercel.app/',
     },
 
     {
