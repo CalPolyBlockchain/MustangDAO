@@ -44,6 +44,11 @@ export default function Proposal(proposal) {
                         </div>
                     </div>
                     <div className="flex flex-row gap-6">
+                    {proposal.vote_count - proposal.quorum < 0 ? (
+                        (<div className=" pt-1">
+                            <progress className="m-2 mb-0 progress bg-lightBlue1 progress-secondary rounded-full w-56 h-4" value={proposal.vote_count} max={proposal.quorum} />
+                            <p className="text-right text-sm opacity-60">{ proposal.quorum - proposal.vote_count} Votes to reach Quorum</p>
+                        </div>)) : (null)}
                     {proposal.votes.map((vote,i) => {
                             return (
                                 <div key={i} className="flex flex-col">
@@ -51,18 +56,12 @@ export default function Proposal(proposal) {
                                     <p className="text-left text-xl"> {vote.option}</p>
                                 </div>)
                         })}
-                        <button onClick={vote} className="btn bg-transparent outline outline-2 outline-green1 text-lg font-bold text-green1  mx-4">Vote</button>
+                        <button onClick={vote} className="btn bg-transparent hover:bg-green1 hover:text-white outline outline-2 outline-green1 text-lg font-bold text-green1  mx-4">Vote</button>
                     </div>
                     {/* INDICATE PROG TO QUORUM */}
 
                 </div>
-                <div className="flex flex-col justify-end">
-                    {proposal.vote_count - proposal.quorum > 0 ? (
-                        (<div>
-                            <progress className=" m-3 progress bg-lightBlue1 progress-secondary rounded-full w-56 h-4" value={proposal.vote_count} max={proposal.quorum} />
-                            <p className="text-right text-sm opacity-60">{proposal.vote_count - proposal.quorum} Votes to reach Quorum</p>
-                        </div>)) : (null)}
-                </div>
+
             </div>
         </div>
     )
