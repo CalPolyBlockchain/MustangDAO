@@ -28,7 +28,7 @@ export default function Navbar(props) {
         setIsOpen(isOpen === '' ? 'hidden' : '');
     }
     return (
-        <nav className=" sticky  top-0 z-50 px-2 sm:px-4 py-2.5 text-white bg-black">
+        <nav className=" sticky  top-0 z-50 px-2 sm:px-4 py-2.5 bg-blac">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
                 <a href='/app' className="flex items-center">
                     <Logo/>
@@ -42,22 +42,19 @@ export default function Navbar(props) {
                     <ul className="flex flex-col items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
 
                         {nav_items.map((item, i) => (
-                            <li className='block py-2 pr-4 pl-3 text-white hover:bg-white hover:text-blac rounded-lg' >
+                            <li className='block py-2 pr-4 pl-3 hover:bg-white hover:text-blac rounded-lg' >
                                 <a href={item.path} className=" ">{item.name}</a>
                             </li>
                         ))}
                         <h3>
-                            <p className="text-white text-3xl p-2 m-3 rounded-xl hover:bg-white hover:text-blac ">
+                            <p className="text-3xl p-2 m-3 rounded-xl hover:bg-white hover:text-blac ">
                                 <a href="https://github.com/CalPolyBlockchain/MustangDAO">
                         <FaGithub className=" hover:text-blac " />
                         </a>
                             </p>
                         </h3>
-                        <a href="app">
-                            <button className='bg-yellow1 m-2 hover:bg-white font-semibold hover:text-yellow1 text-xl text-white py-2 px-4 w-40 rounded-2xl'>
-                                Connect
-                            </button>
-                        </a>
+                            {/* {props.button} */}
+                            
                     </ul>
                 </div>
             </div>

@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+// import { ConvexProvider, ConvexReactClient } from "convex-dev/react";
+// import convexConfig from "./convex.json";
+
 import './index.css';
 import Wrapper from './Wrapper';
 import reportWebVitals from './reportWebVitals';
 
+// const convex = new ConvexReactClient(convexConfig.origin);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    {/* <ConvexProvider convex={convex}> */}
     <Wrapper/>
+    {/* </ConvexProvider> */}
   </React.StrictMode>
 );
 

@@ -3,9 +3,6 @@
 import { clipAddress } from "../utils/formatting";
 import ProposalData from "./ProposalData";
 import { progress } from "daisyui";
-function vote() {
-    console.log('vote');
-}
 
 export default function Proposal(proposal) {
     return (
@@ -22,10 +19,10 @@ export default function Proposal(proposal) {
                         )}
                     </div>
                 </div>
-                <div className="flex flex-row p-1 m-1">
+                <div className="flex flex-col p-1 m-1">
                     {/* user emoji */}
-                    <p className="text-4xl">{proposal.proposer.emoji}</p>
-                    <p className="opacity-60 text-lg">proposed by </p>
+                    <p className="text-2xl p-1">{proposal.proposer.emoji}</p>
+                    <p className="opacity-60 text-sm">proposed by </p>
                 </div>
             </div>
             <div className="px-4 py-1 text-left">
@@ -59,7 +56,7 @@ export default function Proposal(proposal) {
                                     <p className="text-left text-xl"> {vote.option}</p>
                                 </div>)
                         })}
-                        <button onClick={vote} className="btn bg-transparent hover:bg-green1 hover:text-white outline outline-2 outline-green1 text-lg font-bold text-green1  mx-4">Vote</button>
+                        <button className="btn bg-transparent hover:bg-green1 hover:text-white outline outline-2 outline-green1 text-lg font-bold text-green1  mx-4">Vote</button>
                     </div>
                 </div>
             </div>

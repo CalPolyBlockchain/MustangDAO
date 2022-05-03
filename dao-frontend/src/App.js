@@ -4,11 +4,12 @@ import UserHeader from './components/UserHeader';
 import ProposalView from './components/ProposalView';
 import { useState } from 'react';
 import ReactApexCharts from 'react-apexcharts'
-// import Web3Test from './components/Web3Test';
-// const web3js = new web3("");
-// import { newKit } from '@celo/contractkit'
-
-
+import Metamask from './modals/Metamask';
+import VoteModal from './modals/VoteModal';
+import ConnectButton from './components/ConnectButton';
+import {mock_proposals} from './mock_proposals';
+// import NewProposalModal from './modals/NewProposalModal';
+// import { useQuery, useMutation } from "./convex/_generated";
 const user = {
   name: "John Doe",
   balance: "100",
@@ -19,74 +20,32 @@ const user = {
   roles: ["dev", "designer"]
 }
 
-const prop_tags = [
-  {name:"Gov.", description:"Governance", color:"yellow1"},
-  {name:"Funds", description:"allocation of funds", color:"lightBlue1"},
-  {name:"Meeting", description:"orchestration of meeting ", color:"green1"},
-  {name:"Project", description:"Project", color:"darkBlue2"},
-  {name:"Snack", description:"Governance", color:"green2"},
 
-]
+function App(props) {
+  // const getProposals = useQuery("getProposals")?? [];
+  // const newProposal = useMutation("newProposal");
 
+  const [showVoteModal, setShowVoteModal] = useState(false);
+  const [selectedProposal, setSelectedProposal] = useState(null);
 
-const proposals = [
-  {
-    id: 1,
-    name: "Proposal 1",
-    description: "This is proposal 1",
-    tags : [prop_tags[0]],
-    status: "Open",
-    vote_count: 10,
-    quorum: 15,
-    proposer: user,
-    votes: [{ "option": "Yes", "count": 10 },
-    { "option": "No", "count": 4 }]
-  },
-  {
-    id: 1,
-    name: "Make metamask great again",
-    description: "This is proposal here could go some real meaty text, almost as meaty as the rest of the page",
-    tags : [prop_tags[0],prop_tags[2]],
-    status: "Open",
-    vote_count: 10,
-    quorum: 15,
-    proposer: user,
-    votes: [{ "option": "Yes", "count": 10 },
-    { "option": "No", "count": 4 }]
-  },
-  {
-    id: 1,
-    name: "Proposal 1",
-    description: "This is proposal 1",
-    tags : [prop_tags[0],prop_tags[1]],
-    status: "closed",
-    vote_count: 10,
-    quorum: 15,
-    proposer: user,
-    votes: [{ "option": "Yes", "count": 10 },
-    { "option": "No", "count": 4 }]
-  },
-]
+  function prepVote(proposal){
+    
+    setShowVoteModal(true);
+  }
 
-
-function App() {
   return (
     <div className="App container">
       <body>
-        {/* <Web3Test /> */}
-        {/* ~ ROUGH outline of page  order listed does not matter*/}
-        <UserHeader {...user} />
-
+        <ConnectButton/>
+        <UserHeader {...props.user} />
         {/* SHOW active proposals (User should be able to click and vote on these) */}
-        {/* Let user Create Proposal (modal components) */}
-        <ProposalView proposals={proposals}  />
-
-
-        {/*CONNECT User wallet*/}
-
+      <ProposalView proposals={mock_proposals} showVoteModal={prepVote} />
         {/* SHOW  Outcomes of non-active Proposals*/}
-
+        {showVoteModal && <VoteModal/>}
+        {/* <NewProposalModal/> */}
+        
       </body>
+        
     </div>
   );
 }

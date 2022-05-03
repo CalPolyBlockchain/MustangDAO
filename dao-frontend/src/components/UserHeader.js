@@ -2,7 +2,7 @@
 // import {progress} from 'daisyui
 function UserHeader(user) {
     return (
-        <div className="flex flex-row sm:flex-col p-3 m-4 bg-black rounded-lg text-left justify-between opacity-90">
+        <div className="flex flex-row sm:flex-col p-3 m-4 bg-black rounded-lg text-left justify-between opacity-80">
             <div className="flex flex-col p-3 m-3">
                 <p className="text-xl opacity-70">Welcome back</p>
                 <p className="text-4xl text-yellow1">{user.name}</p>
