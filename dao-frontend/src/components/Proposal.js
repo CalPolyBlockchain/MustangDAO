@@ -56,7 +56,7 @@ export default function Proposal(proposal) {
                                     <p className="text-left text-xl"> {vote.option}</p>
                                 </div>)
                         })}
-                        <button className="btn bg-transparent hover:bg-green1 hover:text-white outline outline-2 outline-green1 text-lg font-bold text-green1  mx-4">Vote</button>
+                        <button onClick={()=>proposal.showVoteModal(proposal.id)} className="btn bg-transparent hover:bg-green1 hover:text-white outline outline-2 outline-green1 text-lg font-bold text-green1  mx-4">Vote</button>
                     </div>
                 </div>
             </div>

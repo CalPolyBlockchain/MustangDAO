@@ -8,7 +8,8 @@ import Metamask from './modals/Metamask';
 import VoteModal from './modals/VoteModal';
 import ConnectButton from './components/ConnectButton';
 import {mock_proposals} from './mock_proposals';
-// import NewProposalModal from './modals/NewProposalModal';
+
+import NewProposalModal from './modals/NewProposalModal';
 // import { useQuery, useMutation } from "./convex/_generated";
 const user = {
   name: "John Doe",
@@ -27,21 +28,22 @@ function App(props) {
 
   const [showVoteModal, setShowVoteModal] = useState(false);
   const [selectedProposal, setSelectedProposal] = useState(null);
-
-  function prepVote(proposal){
-    
-    setShowVoteModal(true);
+  
+  function toggleVoteModal(proposal) {
+    setSelectedProposal(proposal);
+    setShowVoteModal(!showVoteModal);
   }
 
   return (
     <div className="App container">
       <body>
+        {showVoteModal && <VoteModal proposal={selectedProposal} open={true} setOpen={()=>toggleVoteModal(selectedProposal)}/>}
+        {/* {showNewProposalModal && <NewProposalModal open={true} setOpen={()=>toggleNewProposalModal(selectedProposal)}/>} */}
         <ConnectButton/>
         <UserHeader {...props.user} />
         {/* SHOW active proposals (User should be able to click and vote on these) */}
-      <ProposalView proposals={mock_proposals} showVoteModal={prepVote} />
+      <ProposalView proposals={mock_proposals} showVoteModal={toggleVoteModal} />
         {/* SHOW  Outcomes of non-active Proposals*/}
-        {showVoteModal && <VoteModal/>}
         {/* <NewProposalModal/> */}
         
       </body>

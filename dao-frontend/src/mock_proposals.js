@@ -31,7 +31,7 @@ export const mock_proposals = [
     { "option": "No", "count": 4 }]
   },
   {
-    id: 1,
+    id: 2,
     name: "Make metamask great again",
     description: "This is proposal here could go some real meaty text, almost as meaty as the rest of the page",
     tags : [prop_tags[0],prop_tags[2]],
@@ -43,7 +43,7 @@ export const mock_proposals = [
     { "option": "No", "count": 4 }]
   },
   {
-    id: 1,
+    id: 3,
     name: "Proposal 1",
     description: "This is proposal 1",
     tags : [prop_tags[0],prop_tags[1]],

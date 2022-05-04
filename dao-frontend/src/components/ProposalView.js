@@ -7,7 +7,7 @@ function ProposalView(props) {
             
             {props.proposals.map(proposal => {
                 return (
-                    <Proposal key={proposal.id} {...proposal} showVoteModal={props.showVoteModal}/>
+                    <Proposal key={proposal.id} {...proposal} showVoteModal={(id) =>props.showVoteModal(id)}/>
                 )
             })}
         </div>

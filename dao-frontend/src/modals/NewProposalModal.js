@@ -1,25 +1,10 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-// import {useState} from 'react';
-
-const verify_vote_option = (vote_option) => {
-    if (vote_option === "Yes" || vote_option === "No") {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 
-
-function VoteModal(props) {
-
-    const [vote_option, setVoteOption] = useState(null);
-    
-
+function NewProposalModal(props) {
+  
   const cancelButtonRef = useRef(null)
-
   return (
     <Transition.Root show={props.open} as={Fragment}>
       <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={props.setOpen}>
@@ -51,27 +36,43 @@ function VoteModal(props) {
           >
             <div className="relative inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div className="flex flex-col">
-                    <div className='flex flex-row'>
-                      <p>Vote on # </p>
-                      <p>{toString(props.proposal.id)}</p>
-                      </div>
-                    <p>{props.proposal.name}</p>
-                    {props.proposal ?? "No proposal??"}
-                    {props.proposal.weighted ? "Weighted" : "Unweighted"}
+                <div className="sm:flex sm:items-start">
+                  
+                  <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                    <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
+                      Create a new proposal
+                    </Dialog.Title>
+                    <div className="mt-2">
+                      {/* Creating form for new proposal details */}
+                      {/* Form and label for new proposal title */}
+                      <div className="mt-4">
+                        <label htmlFor="title" className="block text-sm font-medium leading-5 text-gray-700">
+                          Title
+                        </label>
+                        <input
+                          id="title"
+                          type="text"
+                          className="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus-within:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out"
+                          placeholder="Title"
+                          onChange={props.setTitle}
+                        />
+                      {/* DISPLAY ID OF NEW PROPOSAL */}
+                      <p className='text-lg'> Id: ${props.prev_id}</p>
+                      {/* Include radio weighted, unweighted */}
+                    </div>
+                  </div>
                 </div>
               </div>
-<div className='flex flex-row'>
+              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button
-                  type="button"
-                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                  className="rounded-md px-4 py-2 bg-green1 font-bold text-white hover:bg-transparent hover:outline-4 hover:outline-green1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
                   onClick={() => props.setOpen(false)}
                 >
                   Approve
                 </button>
                 <button
                   type="button"
-                  className="rounded-md px-4 py-2 bg-green1 font-bold text-white hover:bg-transparent hover:bg-opacity-0 hover:outline-4 hover:outline-green1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                  className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                   onClick={() => props.setOpen(false)}
                   ref={cancelButtonRef}
                 >
@@ -86,4 +87,4 @@ function VoteModal(props) {
   )
 }
 
-export default VoteModal;
+export default NewProposalModal;
