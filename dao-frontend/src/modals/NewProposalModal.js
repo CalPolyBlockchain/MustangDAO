@@ -65,19 +65,19 @@ function NewProposalModal(props) {
               </div>
               <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button
-                  className="rounded-md px-4 py-2 bg-green1 font-bold text-white hover:bg-transparent hover:outline-4 hover:outline-green1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                  className="rounded-md px-4 py-2 bg-green1 outline font-bold text-white hover:bg-transparent hover:outline-4 hover:outline-green1  sm:w-auto sm:text-sm"
                   onClick={() => props.setOpen(false)}
                 >
                   Approve
                 </button>
                 <button
-                  type="button"
-                  className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                  className="justify-center hover:bg-pink rounded-md border border-gray-300 "
                   onClick={() => props.setOpen(false)}
                   ref={cancelButtonRef}
                 >
                   Deny
                 </button>
+              </div>
               </div>
             </div>
           </Transition.Child>
