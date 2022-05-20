@@ -9,8 +9,14 @@ export default function Home(props) {
             <div className="aspect-square rounded-full bg-white bg-opacity-30 p-10">
                 
             {/* <img className="w-80 h-auto pr-1" src="./stang.png"></img> */}
-            
+            <a href="/app">
             <button className="btn  bg-green1 text-xl px-3 py-1" href="/app">Launch App</button>
+            </a>
+
+            <div className="">
+                <p>Token Allocations</p>
+                
+            </div>
             </div>
         </div>);
 }

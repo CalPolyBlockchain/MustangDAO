@@ -2,12 +2,13 @@ import React from 'react';
 import Logo from './Logo';
 import { FaGithub } from 'react-icons/fa';
 import { useState } from 'react';
+import ConnectButton from './ConnectButton';
 const nav_items = [
     {
         name: 'Home',
         path: '/'
     },
-    
+
     {
         name: 'blog',
         path: 'https://mustang-dao-forum.vercel.app/',
@@ -31,7 +32,7 @@ export default function Navbar(props) {
         <nav className=" sticky  top-0 z-50 px-2 sm:px-4 py-2.5 bg-blac">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
                 <a href='/app' className="flex items-center">
-                    <Logo/>
+                    <Logo />
                 </a>
                 <button data-collapse-toggle="mobile-menu" type="button" onClick={() => toggle()} className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu" aria-expanded="false">
                     <span className="sr-only">Open main menu</span>
@@ -49,13 +50,14 @@ export default function Navbar(props) {
                         <h3>
                             <p className="text-3xl p-2 m-3 rounded-xl hover:bg-white hover:text-blac ">
                                 <a href="https://github.com/CalPolyBlockchain/MustangDAO">
-                        <FaGithub className=" hover:text-blac " />
-                        </a>
+                                    <FaGithub className=" hover:text-blac " />
+                                </a>
                             </p>
                         </h3>
-                            {/* {props.button} */}
-                            
                     </ul>
+                    
+                    {props.connected? (<button className='bg-yellow1 m-2 hover:bg-white font-semibold hover:text-yellow1 text-xl text-white py-2 px-4 w-40 rounded-2xl' onClick={props.connectToMetamask}>Connect</button>) : 
+                    (<button className='bg-opacity-0 outline outline-yellow outline-4 m-2 font-semibold hover:text-yellow1 text-xl text-white py-2 px-4 w-40 rounded-2xl'>Connected</button>)}
                 </div>
             </div>
         </nav>

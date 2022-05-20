@@ -4,9 +4,8 @@ import UserHeader from './components/UserHeader';
 import ProposalView from './components/ProposalView';
 import { useState } from 'react';
 import ReactApexCharts from 'react-apexcharts'
-import Metamask from './modals/Metamask';
 import VoteModal from './modals/VoteModal';
-import ConnectButton from './components/ConnectButton';
+
 import {mock_proposals} from './mock_proposals';
 
 import NewProposalModal from './modals/NewProposalModal';
@@ -20,6 +19,7 @@ const user = {
   emoji: "👾",
   roles: ["dev", "designer"]
 }
+                            
 
 
 function App(props) {
@@ -28,23 +28,26 @@ function App(props) {
 
   const [showVoteModal, setShowVoteModal] = useState(false);
   const [selectedProposal, setSelectedProposal] = useState(null);
+  const [showNewProposalModal, setShowNewProposalModal] = useState(false);
+
   
   function toggleVoteModal(proposal) {
     setSelectedProposal(proposal);
     setShowVoteModal(!showVoteModal);
+  }
+  function toggleNewProposalModal() {
+    setShowNewProposalModal(!showNewProposalModal);
   }
 
   return (
     <div className="App container">
       <body>
         {showVoteModal && <VoteModal proposal={selectedProposal} open={true} setOpen={()=>toggleVoteModal(selectedProposal)}/>}
-        {/* {showNewProposalModal && <NewProposalModal open={true} setOpen={()=>toggleNewProposalModal(selectedProposal)}/>} */}
-        <ConnectButton/>
-        <UserHeader {...props.user} />
-        {/* SHOW active proposals (User should be able to click and vote on these) */}
+       
+        <UserHeader {...props.user} newProp={toggleNewProposalModal}/>
       <ProposalView proposals={mock_proposals} showVoteModal={toggleVoteModal} />
         {/* SHOW  Outcomes of non-active Proposals*/}
-        {/* <NewProposalModal/> */}
+        {showNewProposalModal? <NewProposalModal setOpen={toggleNewProposalModal}/> : null}
         
       </body>
         

@@ -2,18 +2,18 @@ import { AiFillFileAdd } from 'react-icons/ai';
 // import {progress} from 'daisyui
 function UserHeader(user) {
     return (
-        <div className="flex flex-col p-3 m-4 bg-black rounded-lg text-left opacity-80">
+        <div className="static p-3 m-4 bg-black rounded-lg text-left opacity-80">
             <div className="flex flex-row p-3 m-3 justify-between">
                 <div className="">
                 <p className="text-xl opacity-70">Welcome back</p>
                 <p className="text-4xl text-yellow1">{user.name}</p>
                 </div>
-                <div className="">
-                    <div className='w-30 h-30 bg-white text-center bg-opacity-30 p-2 rounded-lg '>
-                    <p className='text-5xl'><AiFillFileAdd/></p>
-                    <p className='text-center'> New Proposal </p>
-                    </div>
-                </div>
+            <button  onClick={()=>user.showNewProp()}className='bg-yellow1 text-2xl rounded-lg outline-4 outline outline-yellow1 hover:bg-opacity-0 hover:text-yellow text-white py-2 px-3'>
+                
+                    <AiFillFileAdd/>
+                    New Proposal
+                    </button>
+               
             </div>
             <div class="stats shadow text-white bg-black">
 
