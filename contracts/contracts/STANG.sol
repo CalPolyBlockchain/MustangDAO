@@ -3,23 +3,38 @@ pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Snapshot.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 
-contract STANG is ERC20, ERC20Snapshot {
+contract STANG is ERC20, ERC20Snapshot, ERC20Votes {
+    uint256 public s_maxSupply = 1000000;
 
-    constructor() ERC20("MustangDao", "STANG") {
-        
+    constructor() ERC20("MustangDao", "STANG") ERC20Permit("GovernanceToken") {
+        _mint(msg.sender, s_maxSupply);
     }
 
-    function snapshot() public returns(uint256){
-        return(_snapshot());
+    function snapshot() public returns (uint256) {
+        return (_snapshot());
     }
 
-    // The following functions are overrides required by Solidity.
+    function _afterTokenTransfer(
+        address from,
+        address to,
+        uint256 amount
+    ) internal override(ERC20Votes) {
+        super._afterTokenTransfer(from, to, amount);
+    }
 
-    function _beforeTokenTransfer(address from, address to, uint256 amount)
+    function _mint(address to, uint256 amount)
         internal
-        override(ERC20, ERC20Snapshot)
+        override(ERC20Votes, ERC20Snapshot, ERC20)
     {
-        super._beforeTokenTransfer(from, to, amount);
+        super._mint(to, amount);
+    }
+
+    function _burn(address account, uint256 amount)
+        internal
+        override(ERC20Votes)
+    {
+        super._burn(account, amount);
     }
 }
