@@ -8,9 +8,11 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 contract STANG is ERC20, ERC20Snapshot, ERC20Votes {
     uint256 public s_maxSupply = 1000000;
 
-    constructor() ERC20("MustangDao", "STANG") ERC20Permit("GovernanceToken") {
+    constructor() ERC20("MustangDAO", "STANG") ERC20Permit("GovernanceToken") {
         _mint(msg.sender, s_maxSupply);
     }
+
+    // Token holders' voting weight is determined by a snapshot of their STANG balance AT THE TIME OF ANY NEW PROPOSAL CREATION
 
     function snapshot() public returns (uint256) {
         return (_snapshot());

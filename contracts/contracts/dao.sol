@@ -1,8 +1,41 @@
-import "./STANG.sol";
-
 pragma solidity ^0.8.4;
 
-contract DAO {
+import "./STANG.sol";
+import "@openzeppelin/contracts/governance/Governor.sol";
+import "@openzeppelin/contracts/governance/extensions/GovernorCountingSimple.sol";
+import "@openzeppelin/contracts/governance/extensions/GovernorVotes.sol";
+import "@openzeppelin/contracts/governance/extensions/GovernorVotesQuorumFraction.sol";
+import "@openzeppelin/contracts/governance/extensions/GovernorTimelockControl.sol";
+
+contract DAO is
+    Governor,
+    GovernorCountingSimple,
+    GovernorVotes,
+    GovernorVotesQuorumFraction,
+    GovernorTimelockControl
+{
+    uint256 public s_votingDelay;
+    uint256 public s_votingPeriod;
+    STANG daoToken;
+
+    constructor(
+        address _daoToken
+        ERC20Votes _token,
+        TimelockController _timelock,
+        uint256 _quorumPercentage,
+        uint256 _votingPeriod,
+        uint256 _votingDelay
+    ) 
+        Governor("GovernorContract")
+        GovernorVotes(_token)
+        GovernorVotesQuorumFraction(_quorumPercentage)
+        GovernorTimelockControl(_timelock)
+    {
+        daoToken = STANG(_daoToken);
+        s_votingDelay = _votingDelay;
+        s_votingPeriod = _votingPeriod;
+    }
+
     struct Proposal {
         uint256[] opts;
         bool weighted;
@@ -16,16 +49,10 @@ contract DAO {
         uint256 totalVotes;
     }
 
-    STANG daoToken;
-
     //proposalId => Proposal
     mapping(uint256 => Proposal) public proposals;
 
     uint256 propsIdCnt = 0;
-
-    constructor(address _daoToken) {
-        daoToken = STANG(_daoToken);
-    }
 
     //optsString[], title, description, propId, endTimestamp
     event newProposal(string[], string, string, uint256, uint256);
